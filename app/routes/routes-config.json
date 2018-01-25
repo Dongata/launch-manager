@@ -1,4 +1,4 @@
 [{
-    "route": "api/launch",
+    "route": "/api/launch",
     "controller": "launchController"
 }]
