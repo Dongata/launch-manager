@@ -1,4 +1,5 @@
-import { Application } from "express";
+import { Application, Response } from "express";
+import { errorResponse } from "../model/errorResponse";
 
 export abstract class baseController {
     protected app : Application;
