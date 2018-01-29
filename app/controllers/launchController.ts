@@ -1,20 +1,19 @@
 import { Application, Request, Response, NextFunction } from "express";
-import { baseController } from "./baseController";
+import { BaseController } from "./baseController";
 import { errorResponse } from "../model/errorResponse";
-import { inject } from "dependency-injection.ts/lib/src/inject";
-import { launchService } from "../services/launch-service";
+import { LaunchService } from "../services/LaunchService";
 
-export class launchController extends baseController{
-    @inject
-    private _launchService : launchService;
+export class LaunchController extends BaseController{
+    private launchService : LaunchService;
 
     protected registerRoutes(){
-        this.app.get(this.baseRoute, this.Get);
-        this.app.get(this.baseRoute + '/:id', this.GetOne);
+        this.app.get(this.baseRoute, this.Get.bind(this));
+        this.app.get(this.baseRoute + '/:id', this.GetOne.bind(this));
+        this.launchService = new LaunchService();
     }
     
     private Get(req : Request, res : Response){
-        res.json(this._launchService.getAll());
+        res.json(this.launchService.getAll());
     }
 
     private GetOne(req : Request, res : Response){

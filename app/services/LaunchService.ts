@@ -1,7 +1,8 @@
-import { launch } from "../model/launch";
+import { Launch } from "../model/launch";
+import { ILaunchService } from "./ILaunchService";
 
-export class launchService{
-    public getAll(){
+export class LaunchService implements ILaunchService{
+    public getAll() : Array<Launch>{
         return [
             {
                 id : 1,
