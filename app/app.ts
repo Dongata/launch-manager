@@ -7,5 +7,4 @@ var app = express();
 app.use(bodyParser.json());
 var rc : routesConfig = new routesConfig();
 rc.registerRoutes(app);
-
 module.exports = app;
