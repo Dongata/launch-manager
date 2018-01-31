@@ -12,8 +12,13 @@ export class LaunchController extends BaseController{
         this.launchService = new LaunchService();
     }
     
-    private Get(req : Request, res : Response){
-        res.json(this.launchService.getAll());
+    private async Get(req : Request, res : Response){
+        try{
+            res.json(await this.launchService.getAll());
+        }
+        catch(ex){
+            console.log(ex);
+        }
     }
 
     private GetOne(req : Request, res : Response){

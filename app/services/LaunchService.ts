@@ -1,21 +1,15 @@
 import { Launch } from "../model/launch";
 import { ILaunchService } from "./ILaunchService";
+import { LaunchRepository } from "../repositories/LaunchRepository";
 
 export class LaunchService implements ILaunchService{
-    public getAll() : Array<Launch>{
-        return [
-            {
-                id : 1,
-                name : "asd"
-            },
-            {
-                id : 2,
-                name : "asd"
-            },
-            {
-                id : 3,
-                name : "asd"
-            }
-        ]
+    private launchRepository : LaunchRepository;
+    
+    constructor() {
+        this.launchRepository = new LaunchRepository();
+    }
+
+    public async getAll() : Promise<Array<Launch>>{
+        return await this.launchRepository.getAll();
     }
 }
