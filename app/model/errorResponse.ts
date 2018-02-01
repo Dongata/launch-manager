@@ -1,7 +1,9 @@
-export class errorResponse{
+export class ErrorResponse{
     public message : string;
+    public status : number;
 
-    constructor(message:string){
+    constructor(message:string, status : number){
         this.message = message;
+        this.status = status;
     }
 }

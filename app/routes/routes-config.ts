@@ -1,5 +1,5 @@
 import { Application } from 'express';
-import { route } from '../model/route';
+import { Route } from '../model/route';
 import { exec } from 'child_process';
 
 export class routesConfig{
@@ -10,7 +10,7 @@ export class routesConfig{
     }
 
     public registerRoutes(express : Application){
-        var routes : Array<route> = require('./routes-config.json');
+        var routes : Array<Route> = require('./routes-config.json');
         routes.forEach(a => {
             var b = this.findController(a.controller);
             new b(express, a.route);
